@@ -1,0 +1,11 @@
+class image():
+    def __init__(self, identificator: str, location: str, info_there: dict, info: dict):
+        self.identificator = identificator  # always a uuid as a str
+        self.location = location            # string
+        self.info_there = info_there        # dict with bool as val
+        self.info = info
+    def debug(self):
+        print("Identificator: " + self.identificator + "\nlocation: " + self.location + "\ninfo_there: " + str(self.info_there) + "\ninfo: " + str(self.info))
+class user():
+    def __init__(self, images):
+        self.images = images

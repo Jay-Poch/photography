@@ -1,0 +1,88 @@
+body > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+}
+
+/* Side-by-side layout on medium screens and up */
+@media (min-width: 768px) {
+  body > div {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  #image {
+    max-width: 100%;
+    width: 50%;
+    height: auto;
+  }
+
+  #textbox {
+    width: 50%;
+  }
+}
+
+/* Optional: Add padding or border styling */
+#textbox {
+  padding: 1rem;
+}
+
+#textbox2 {
+  padding: 1rem;
+  border: 1px solid;
+  border-color: inherit; /* Respect Tailwind/DaisyUI theme */
+  border-radius: 0.5rem;
+  white-space: pre-wrap;
+}
+#share {
+    position: fixed;
+    right: 40px;
+    bottom: 10px;
+}
+#toast {
+    opacity: 100%;
+}
+.alert-info {
+  position: fixed;
+  bottom: 3.8rem;
+  right: 1rem;
+  --tw-bg-opacity: 1;
+  background-color: hsla(207, 89.8%, 53.9%, 0.36);
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  color: hsl(213.6, 100%, 50%);
+}
+
+.btn-success {
+  --tw-bg-opacity: 1;
+  background-color: hsl(118.1, 100%, 50.2%);
+  --tw-border-opacity: 1;
+  border-color: hsl(118.1, 100%, 50.2%);
+  --tw-text-opacity: 1;
+  color: hsla(var(--b2,220 20% 98%)/var(--tw-text-opacity));
+}
+
+#save {
+  width: 200px;
+  height: 85px;
+  position: fixed;
+  right: 20;
+  bottom: 20px;
+  font-size: 32;
+  
+}
+
+#input {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+#image_location {
+  position: fixed;
+  left: 1rem;
+  width: 40rem;
+}
