@@ -21,8 +21,10 @@ def hello_world(id):
 @app.route("/add_image", methods=["POST"])
 def save_image():
     global user
-    data = request.get_json()
-    print(data)
+    data = request.get_json() 
+    # example data {'image_address': '1', 'Kameramodell': '2', 'Verwendetes_Objektiv': '3', 'Belichtungszeit': '4', 'Blende': '5', 'ISO': '6', 'Beleuchtung': '7', 'Fokuspunkt': '8', 'Fotogenre': '9'}
+    image = iamge
+    print(data["image_address"])
     
 
     return jsonify({"status": "success"}), 200
