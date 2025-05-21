@@ -11,7 +11,7 @@ async function myFunction(id) {
 
 const urlParams = new URLSearchParams(window.location.search);
 const contentId = urlParams.get('content_id');
-
+console.log(contentId);
 
 async function run() {
     let result = await myFunction(contentId);
