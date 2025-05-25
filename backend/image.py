@@ -7,5 +7,5 @@ class image():
     def debug(self):
         print("Identificator: " + self.identificator + "\nlocation: " + self.location + "\ninfo_there: " + str(self.info_there) + "\ninfo: " + str(self.info))
 class user():
-    def __init__(self, images):
-        self.images = images
+    def __init__(self, images: dict[str, image]):
+        self.images = images # dict

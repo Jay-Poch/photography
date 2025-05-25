@@ -1,8 +1,10 @@
+console.log("triggerd");
 const url = window.location.href;
 async function myFunction(id) {
   try {
     let response = await fetch('http://127.0.0.1:5000/' + id);
     let data = await response.json();
+    console.log(data);
     return data; // Returns fetched data
   } catch (error) {
     console.error('Error:', error);
@@ -11,7 +13,6 @@ async function myFunction(id) {
 
 const urlParams = new URLSearchParams(window.location.search);
 const contentId = urlParams.get('content_id');
-console.log(contentId);
 
 async function run() {
   let result = await myFunction(contentId);
