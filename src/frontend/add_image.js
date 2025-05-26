@@ -1,5 +1,4 @@
-save = document.getElementById("save")
-
+save = document.getElementById("save").addEventListener("click", handle_save)
 function handle_save() {
   const Kameramodell = document.getElementById("Kameramodell").value
   const Verwendetes_Objektiv = document.getElementById("Verwendetes Objektiv").value
@@ -21,8 +20,7 @@ function handle_save() {
     Fokuspunkt,
     Fotogenre
   };
-  console.log(data);
-
+  //write to the server
   fetch("http://127.0.0.1:5000/add_image", {
     method: "POST",
     headers: {
@@ -33,11 +31,10 @@ function handle_save() {
     .then(response => response.json())
     .then(result => {
       console.log("Success:", result);
+      window.open("http://localhost:2020/frontend/display_image.html?content_id=fd8454eb-a28d-4f68-bb01-9d7f6723d1c3", "_blank");
     })
     .catch(error => {
       console.error("Error:", error);
     });
 
 }
-
-save.addEventListener("click", handle_save)
