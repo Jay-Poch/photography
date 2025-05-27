@@ -2,7 +2,9 @@ package main
 
 import (
 	"net/http"
+	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,17 +22,25 @@ type image struct {
 
 func main() {
 	images := map[string]image{
-		"test":  image{Id: "test", Location: "myhome", Info: map[string]string{"test": "test"}},
-		"test2": image{Id: "test2", Location: "myhome", Info: map[string]string{"test": "test"}},
+		"test":  {Id: "test", Location: "myhome", Info: map[string]string{"test": "test"}},
+		"test2": {Id: "test2", Location: "myhome", Info: map[string]string{"test": "test"}},
 	}
 
 	// Create a new web server
 	router := gin.Default()
-
+	// Enable CORS with custom settings
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:2020"}, // <-- frontend URL
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 	// GET /data → return the list of items
 	router.GET("/:id", func(c *gin.Context) {
 		id := c.Param("id")
-		c.JSON(http.StatusOK, images[id])
+		c.JSON(http.StatusOK, images[id].Info)
 	})
 
 	// POST /data → add a new item to the list
@@ -48,6 +58,5 @@ func main() {
 		c.JSON(http.StatusCreated, gin.H{"message": "Item added!"})
 	})
 
-	// Start the server on port 8080
-	router.Run(":8080")
+	router.Run(":5000")
 }
