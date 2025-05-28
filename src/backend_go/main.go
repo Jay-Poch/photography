@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"time"
 
@@ -61,7 +60,6 @@ func main() {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		fmt.Print(newItem)
 		// Add the item to the data store
 		//dataStore = append(dataStore, newItem)
 		c.JSON(http.StatusCreated, gin.H{"message": "Item added!"})
