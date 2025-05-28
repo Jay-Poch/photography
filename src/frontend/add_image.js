@@ -30,8 +30,8 @@ function handle_save() {
   })
     .then(response => response.json())
     .then(result => {
-      console.log("Success:", result);
-      window.open("http://localhost:2020/frontend/display_image.html?content_id=fd8454eb-a28d-4f68-bb01-9d7f6723d1c3", "_blank");
+      console.log("Success:", result.id);
+      window.open("http://localhost:2020/frontend/display_image.html?content_id=" + result.id, "_blank");
     })
     .catch(error => {
       console.error("Error:", error);
