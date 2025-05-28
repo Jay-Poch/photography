@@ -26,7 +26,6 @@ def hello_world(id):
 def save_image():
     global user1
     data = request.get_json() 
-    print("IMPORTANT!!!", data, "IMPORTANT!!!!!!!!!!!!")
     image1 = image_base(str(uuid.uuid4()), data["image_address"], {}, {
     "camera_model": data["Kameramodell"],
     "lens_used": data["Verwendetes_Objektiv"],
