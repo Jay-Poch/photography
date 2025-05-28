@@ -4,7 +4,7 @@
 cd ..
 source venv/bin/activate
 # Start backend in background
-python3 src/backend/main.py &
+python3 src/backend_py/main.py &
 
 # Start frontend in foreground
 cd src
