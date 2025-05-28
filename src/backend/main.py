@@ -19,14 +19,14 @@ user1 = user(images)
 @app.route("/<id>")
 def hello_world(id):
     global user1
-    image = {"location": user1.images[id].location, "info_there": user1.images[id].info_there, "info": user1.images[id].info}
-    return jsonify(image)
+    return jsonify(user1.images[id].dictionary())
 
 
 @app.route("/add_image", methods=["POST"])
 def save_image():
     global user1
     data = request.get_json() 
+    print("IMPORTANT!!!", data, "IMPORTANT!!!!!!!!!!!!")
     image1 = image_base(str(uuid.uuid4()), data["image_address"], {}, {
     "camera_model": data["Kameramodell"],
     "lens_used": data["Verwendetes_Objektiv"],

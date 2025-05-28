@@ -6,18 +6,25 @@ import (
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 )
 
-// Define the structure of your data (like a dictionary in Python)
-type Item struct {
-	Name string `json:"name"` // Expect JSON with a "name" field
-}
-
-// This will store our data in memory
 type image struct {
 	Id       string            `json:"id"`
 	Location string            `json:"location"`
 	Info     map[string]string `json:"info"`
+}
+type UserInput struct {
+	Location             string            `json:"image_address"`
+	Info                 map[string]string `json:"info"`
+	Kameramodell         string            `json:"Kameramodell"`
+	Verwendetes_Objektiv string            `json:"Verwendetes_Objektiv"`
+	Belichtungszeit      string            `json:"Belichtungszeit"`
+	Blende               string            `json:"Blende"`
+	ISO                  string            `json:"ISO"`
+	Beleuchtung          string            `json:"Beleuchtung"`
+	Fokuspunkt           string            `json:"Fokuspunkt"`
+	Fotogenre            string            `json:"Fotogenre"`
 }
 
 func main() {
@@ -53,16 +60,25 @@ func main() {
 
 	// POST /data → add a new item to the list
 	router.POST("/add_image", func(c *gin.Context) {
-		var newItem Item
-
-		// Try to read JSON from the request
-		if err := c.BindJSON(&newItem); err != nil {
+		var input UserInput
+		if err := c.ShouldBindJSON(&input); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
-		// Add the item to the data store
-		//dataStore = append(dataStore, newItem)
-		c.JSON(http.StatusCreated, gin.H{"message": "Item added!"})
+		id := uuid.New()
+		postet := image{Id: id.String(), Location: input.Location, Info: map[string]string{
+			"camera_model":  input.Kameramodell,
+			"lens_used":     input.Verwendetes_Objektiv,
+			"shutter_speed": input.Belichtungszeit,
+			"aperture":      input.Blende,
+			"ISO":           input.ISO,
+			"lighting":      input.Beleuchtung,
+			"focal_point":   input.Fokuspunkt,
+			"photo_genre":   input.Fotogenre}}
+		c.JSON(http.StatusOK, gin.H{
+			"id": postet.Id})
+		images[postet.Id] = postet
+
 	})
 
 	router.Run(":5000")
