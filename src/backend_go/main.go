@@ -29,7 +29,7 @@ type UserInput struct {
 }
 
 func main() {
-	selecty("SELECT * FROM Photography WHERE id = 'b77cc1a0-91ec-4d64-bb6d-21717737ea3c'")
+	selecty("SELECT * FROM Photography WHERE id = '[value-1]'")
 	images := map[string]image{
 		"test": {Id: "test", Location: "myhome", Info: map[string]string{"test": "test"}},
 		"test2": {Id: "test2", Location: "https://imgs.search.brave.com/K_opZj44YMhs8CF2dPWMiMkxY8RivnZ0E1FfN9HE-gM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vR1JlMVlh/TkxKR2lvSWJOa2s5/ZEJGUkptcGIwOGJv/OTRvVkpCUkRWODZ6/dy9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTlq/YjI1MC9aVzUwTFcx/aGJtRm5aVzFsL2Ju/UXRabWxzWlhNdVky/RnUvZG1FdVkyOXRM/Mk5rYmkxai9aMmt2/YVcxaFoyVXZaajFo/L2RYUnZMSEU5TnpB/dllUbGgvTlRNeVpU/UXRZVFZsTUMwMC9N/R1UwTFRrd09UTXRN/VEpoL09UWXlORGxq/TjJObUx6RXcvYzJs/dGNHeGxkMkY1YzNS/di9aVzVvWVc1alpY/bHZkWEpwL2JXRm5a/WE10VFc5eVpYSmwv/YzI5MWNtTmxjeko0/TG5CdS9adw", Info: map[string]string{

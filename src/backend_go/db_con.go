@@ -38,12 +38,42 @@ func selecty(querry string) {
 	for rows.Next() {
 		var ID string
 		var Location string
-		var Info string
-		if err := rows.Scan(&ID, &Location, &Info); err != nil {
+		var camera_model string
+		var lens_used string
+		var shutter_speed string
+		var aperture string
+		var ISO string
+		var lighting string
+		var focal_point string
+		var photo_genre string
+
+		if err := rows.Scan(
+			&ID,
+			&Location,
+			&camera_model,
+			&lens_used,
+			&shutter_speed,
+			&aperture,
+			&ISO,
+			&lighting,
+			&focal_point,
+			&photo_genre,
+		); err != nil {
 			log.Fatal(err)
 		}
-		//respone = image{Id: ID, Location: Location, Info: map[string]string{"test": "test"}}
-		fmt.Printf("ID: %s, Location: %s, Info: %s\n", ID, Location, Info)
+		fmt.Printf("ID: %s, Location: %s, camera_model: %s,lens_used: %s,shutter_speed: %s,aperture: %s,ISO: %s,lighting: %s,focal_point: %s,photo_genre: %s\n",
+			ID,
+			Location,
+			camera_model,
+			lens_used,
+			shutter_speed,
+			aperture,
+			ISO,
+			lighting,
+			focal_point,
+			photo_genre,
+		)
+		//respone := image{Id: ID, Location: Location, Info: map[string]string{"test": "test"}}
 	}
 
 	defer db.Close()
